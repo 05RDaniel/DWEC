@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      palo = "";
+      n=Math.floor(Math.random() * 4);
+      switch (n) {
+        case 0:
+          palo = " de espadas";
+          break;
+        case 1:
+          palo = " de bastos";
+          break;
+        case 2:
+          palo = " de copas";
+          break;
+        case 3:
+          palo = " de oros";
+          break;
+      }
+      document.write(Math.floor((Math.random() * 12)+1), palo);
+      //Genero un número aleatorio del 1 al 12 y otro del 0 al 3 que posteriormente tranformo a cadena según el resultado
+    </script>
+  </body>
+</html>

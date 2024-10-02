@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      palo = "";
+      n=""
+      s=""
+      for (i = 0; i < 5; i++) {
+        rn = Math.floor(Math.random() * 10)
+        n+=rn.toString();
+      }
+      for (i = 0; i < 3; i++) {
+        rn = Math.floor(Math.random() * 10)
+        s+=rn.toString()
+      }
+      document.write("Numero: ",n,"<br>Serie: ",s);
+      //Genero 5 números almacenándolos en un String (para guardar los ceros de la izquierda) para generar el numero ganador y luego lo mismo pero con tres números para generar la serie
+    </script>
+  </body>
+</html>

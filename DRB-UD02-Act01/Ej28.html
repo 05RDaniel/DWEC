@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      i = 0;
+      x = 0;
+      m = 0;
+      c = 0;
+      z = 0;
+      s = 0;
+      do {
+        n = parseInt(prompt("Introduce un número"));
+        if (n>0) {
+            i+=n;
+            m++
+        } else if (n<0){
+            x += n;
+            c++
+        } else {z++}
+        s++
+      } while (s < 10);
+      document.write("La media de todos los números positivos es ",
+       i/m,"<br>La media de todos los números negativos es ",
+       x/c,"<br>El total de ceros es de ",z);
+    </script>
+    <!-- Pide 10 números, almacenando la suma de 
+    las variables separadas segun positivo, negativo o 0
+    y contando el número de iteraciones de cada tipo,
+    para mostrar el resultado dividido de cada tipo
+    al final -->
+  </body>
+</html>

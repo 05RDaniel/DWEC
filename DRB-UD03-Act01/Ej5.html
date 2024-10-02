@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      dia = parseInt(prompt("Introduce el dia"));
+      mes = parseInt(prompt("Introduce el mes"));
+      año = parseInt(prompt("Introduce el año"));
+      horas = parseInt(prompt("Introduce las horas trabajadas"));
+      fecha = new Date(año, mes, dia);
+      sueldo = 0;
+      if (fecha.getDay() == 2 || fecha.getDay() == 3) {
+        sueldo = horas * 20;
+      } else {
+        sueldo = horas * 15;
+      }
+      window.alert("El empleado cobrará " + sueldo + "€");
+    </script>
+  </body>
+</html>

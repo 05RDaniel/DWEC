@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        dia = parseInt(prompt("Introduce el dia de inicio"));
+        mes = parseInt(prompt("Introduce el mes de inicio"));
+        año = parseInt(prompt("Introduce el año de inicio"));
+        fecha = new Date(año,mes,dia).getTime();
+        dia2 = parseInt(prompt("Introduce el dia de fin"));
+        mes2 = parseInt(prompt("Introduce el mes de fin"));
+        año2 = parseInt(prompt("Introduce el año de fin"));
+        fecha2 = new Date(año2,mes2,dia2).getTime();
+        dias = (fecha2-fecha)/(1000*60*60*24);
+        sueldo = dias*55-(55*0.12)
+        document.write(dias,"<br>")
+        document.write("Su sueldo será de ",sueldo.toFixed(2),"€")
+    </script>
+</body>
+</html>

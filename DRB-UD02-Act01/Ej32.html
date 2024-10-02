@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      codArt=0
+      quantSold=0
+      literPrice=0
+      totalSold=0
+      sumSold1=0
+      sumFac600=0
+      i=0
+        do {
+            codArt=parseInt(prompt("Introduce el código de artículo"))
+            quantSold=parseInt(prompt("Introduce la cantidad de producto vendido (en litros)"))
+            literPrice=parseInt(prompt("Introduce el precio por litro del artículo"))
+            totalSold += quantSold*literPrice
+            codArt==1?sumSold1+=quantSold:null
+            quantSold*literPrice>600?sumFac600++:null
+            i++
+        } while (i<5)
+        document.write("Facturación total: ",totalSold,
+        "<br>Cantidad en litros vendidos del artículo 1: ",sumSold1,
+        "<br>Facturas emitidas de más de 600€: ",sumFac600)
+  </script>
+    <!-- Muestra facturación total, cantidad en litros vendidos del artículo
+    1 y cuantas facturas se emitieron de más de 600 €. -->  
+  </body>
+</html>

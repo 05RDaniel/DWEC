@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      i = 1
+      do {
+        n=parseInt(prompt("Introduce un número del 1 al 10"))
+        n<1||n>10?window.alert("¡Ese número no está entre el 1 y el 10, majadero!"):null
+      } while (n>10||n<1);
+        do {
+            document.write(n," x ",i," = ",i*n,"<br>")
+            i++
+        } while (i<=10)
+  </script>
+    <!-- Pide un número del 1 al 10, mostrando un
+    mensaje de error si el número introducido no
+    cumple los requisitos. Después, genera la tabla de
+    multiplicar del número introducido -->
+  </body>
+</html>

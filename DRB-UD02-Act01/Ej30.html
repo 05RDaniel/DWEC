@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      age=0
+      height=0
+      medAge=0
+      medHeight=0
+      numPlus18=0
+      numPlus175=0
+      i=0
+      do {
+        age = parseInt(prompt("Introduce la edad"));
+        height = parseFloat(prompt("Introduce la altura (en metros)"));
+        medAge += age
+        medHeight += height
+        age>18?numPlus18++:null;
+        height>1.75?numPlus175++:null;
+        i++
+      } while (i < 5);
+      document.write("La media de edad es de ",medAge/i," años<br>La media de altura es de ",
+      medHeight/i," metros<br>Hay ",numPlus18," alumnos mayores de 18 años<br>Hay ",
+      numPlus175," alumnos mas altos que 1.75 metros")
+    </script>
+    <!-- Indica la media de edades y de alturas de los cinco alumnos
+    intorucidos y muestra cuantos son mayores de 18 años
+    y cuantos son más altos que 1.75 metros -->
+  </body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        fecha = new Date
+        fecha.getDate()<10?dia="0"+fecha.getDate():dia=fecha.getDate()
+        fecha.getMonth()<10?mes="0"+fecha.getMonth():mes=fecha.getMonth()
+        año = fecha.getFullYear()
+        document.write(dia,"/",mes,"/",año)
+        // extraigo dia, mes y año y lo muestro por pantalla
+    </script>
+</body>
+</html>

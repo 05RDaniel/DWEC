@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var tiempo_aviso = setTimeout("alert('Han pasado 5 seg.')", 5000);
+      document.write("<p onclick='clearTimeout(tiempo_aviso)'>Parar</p>");
+      var tiempo_aviso_rep = setInterval("alert('Han pasado 10 seg.')", 10000);
+      document.write("<p onclick='clearInterval(tiempo_aviso_rep)'>Parar Repeticiones</p>");
+    </script>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        fecha = new Date
+        dia=fecha.getDate()
+        mes=fecha.getMonth()
+        año = fecha.getFullYear()
+        dia -= 18
+        dia < 0 ? (dia += 30, mes--):null;
+        mes -= 4
+        mes < 0 ? (mes += 12, año--):null;
+        año -= 5
+        document.write(dia,"/",mes,"/",año)
+        // Resto los parámetros dados comprobando que se mantiene una fecha válida (en el hipotético caso de que todos los meses tuvieran 30 dias)
+    </script>
+</body>
+</html>

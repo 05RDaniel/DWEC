@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      n = 0;
+      apr = 0;
+      sus = 0;
+      i = 0;
+      do {
+        do {
+          n = parseInt(prompt("Introduce un número"));
+          n < 0 || n > 10
+            ? window.alert("¡Ese número no está entre el 0 y el 10, majadero!")
+            : null;
+        } while (n > 10 || n < 0);
+        if (n >= 5) {
+          apr++;
+        } else {
+          sus++;
+        }
+        i++
+      } while (i < 6);
+      document.write(
+        "Hay un total de ",apr," aprobados y ",sus," suspendidos"
+      );
+    </script>
+    <!-- Pide 6 números, almacenando la suma de 
+      las variables separadas segun positivo, negativo o 0
+      y contando el número de iteraciones de cada tipo,
+      para mostrar el resultado dividido de cada tipo
+      al final -->
+  </body>
+</html>

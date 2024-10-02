@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        fecha1 = new Date(1956)
+        fecha2 = new Date(1998)
+        fecha3 = new Date(2005)
+
+        corte1 = new Date(1980)
+        corte2 = new Date(2000)
+        
+        array = [["Alex", "García Vaquero", 1200, fecha1],
+        ["Pepe", "García Vaquero", 1200, fecha2],
+        ["Axlin", "García Vaquero", 1200, fecha3]]
+
+        array.forEach(element => {
+            if (element[3]<=corte1) {
+                retencion = (element[2]*0.2)
+            } else if (element[3]>=corte2) {
+                retencion = (element[2]*0.05)
+            } else{
+                retencion = (element[2]*0.15)
+            }
+            document.write(element[0],", ",element[1],", ",element[2],"€, ",element[3].getFullYear(),", -",retencion,"€<br>")
+        });
+        // Recojo los datos en un array y los muestro, calculando la cantidad que se retendrá a cada persona en euros
+    </script>
+</body>
+
+</html>

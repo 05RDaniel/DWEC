@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      fecha = new Date(1990, 10, 5);
+      today = new Date();
+      año = fecha.getFullYear();
+      mes = fecha.getMonth();
+      dia = fecha.getDate();
+      nacimiento = dia + "/" + mes + "/" + año;
+      años = today.getFullYear() - año;
+      if (mes > today.getMonth() + 1 || dia > today.getDay()) {
+        años--;
+      }
+      edad = años;
+
+      datos = [1, "Luis", "Mas Ros", nacimiento, 7.5];
+      document.write("<table border=1px>");
+      document.write("<tr><td>Nombre</td><td>", datos[1], "</td></tr>");
+      document.write("<tr><td>Apellidos</td><td>", datos[2], "</td></tr>");
+      document.write("<tr><td>Nacimiento</td><td>", datos[3], "</td></tr>");
+      document.write("<tr><td>Nota</td><td>", datos[4], "</td></tr>");
+      document.write("<tr><td>Edad</td><td>", edad, "</td></tr>");
+    </script>
+  </body>
+</html>

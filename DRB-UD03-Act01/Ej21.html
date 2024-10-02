@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+        max = 0
+      for (i = 0; i < 5; i++) {
+        n = prompt("Introduce un número")
+        if (n>0){
+            if (n>max){
+                max = n
+            }
+        }
+      }
+      document.write("El número mayor es ",max)
+      //saco cada número y, tras comprobar que no es negativo, lo comparo con el mayor número almacenado, sustituyéndolo de ser necesario
+    </script>
+  </body>
+</html>

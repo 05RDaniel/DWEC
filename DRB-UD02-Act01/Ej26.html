@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        i = 1
+        n = 0
+        x = 0
+        do {
+            if(i%2!=0){x=i;n++}
+            i++
+        } while (n<1)
+        do {
+            if(i%2!=0){x*=i;n++}
+            i++
+        } while (n<10)
+        document.write(x)
+    </script>
+    <!-- Comprueba si i es impar y, de ser así,
+    lo asigna miltiplicando a x, excepto en el primer
+    caso en el que se hace una asignación a secas para
+    tener un valor inicial -->
+</body>
+
+</html>

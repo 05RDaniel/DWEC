@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      base = parseFloat(prompt("Introduce la base imponible"));
+      iva = prompt(
+        "Introduce el tipo de IVA(general, reducido o superreducido)"
+      );
+      ivapercent = 0;
+      cod = prompt(
+        "Introduzca el código promocional (nopro, mitad, meno5 o 5porc)"
+      );
+      prom = 0;
+      price = 0;
+      check = false;
+
+      /* Switch para cambiar el precio según el código */
+      check = false;
+      do {
+        switch (cod) {
+          case "nopro":
+            check = true;
+            break;
+          case "mitad":
+            prom = base / 2;
+            check = true;
+            break;
+          case "meno5":
+            prom = base - 5;
+            check = true;
+            break;
+          case "5porc":
+            prom = base - base * 0.05;
+            check = true;
+            break;
+
+          default:
+            window.alert("Código no válido, inténtelo de nuevo");
+            break;
+        }
+      } while (check == false);
+
+      /* Switch para cambiar el precio según el IVA */
+      do {
+        switch (iva) {
+          case "general":
+            ivapercent = 21;
+            price = prom + prom * 0.21;
+            check = true;
+            break;
+          case "reducido":
+            ivapercent = 10;
+            price = prom + prom * 0.1;
+            check = true;
+            break;
+          case "superreducido":
+            ivapercent = 4;
+            price = prom + prom * 0.04;
+            check = true;
+            break;
+
+          default:
+            window.alert("Código no válido, inténtelo de nuevo");
+            break;
+        }
+      } while (check == false);
+
+      document.write(
+        "Base imponible: ",
+        base,
+        "<br>Cod. promo (",
+        cod,
+        "): -",
+        base - prom,
+        "<br>IVA (",
+        ivapercent,
+        "%): ",
+        price - prom,
+        "<br>Precio con IVA: ",
+        price,
+        "<br>TOTAL: ",
+        price
+      );
+    </script>
+  </body>
+</html>

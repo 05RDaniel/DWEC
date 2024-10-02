@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var books = [   ["1","Access para windows","Charles Siegel","Anaya","Informática","84-7614-759-7","450","45,67"],
+                        ["2","Salud","Eduardo Almansa","Deusto","Medicina","24-3547-590-1","153","23,18"],
+                        ["3","Redes de Computadores","Luis Cárcel","Paraninfo","Informática","47-8829-435-7","215","32,86"]];
+        var cod = parseInt(prompt("Introduce un código de libro"))
+        cod>books.length?window.alert("El libro solicitado no existe!"):cod--;
+        document.write("<table border=1px>")
+        document.write("<tr><td>Código</td><td>",books[cod][0],"</td></tr>")
+        document.write("<tr><td>Título</td><td>",books[cod][1],"</td></tr>")
+        document.write("<tr><td>Autor</td><td>",books[cod][2],"</td></tr>")
+        document.write("<tr><td>Editorial</td><td>",books[cod][3],"</td></tr>")
+        document.write("<tr><td>Tema</td><td>",books[cod][4],"</td></tr>")
+        document.write("<tr><td>IRBN</td><td>",books[cod][5],"</td></tr>")
+        document.write("<tr><td>Páginas</td><td>",books[cod][6],"</td></tr>")
+        document.write("<tr><td>Precio</td><td>",books[cod][7],"</td></tr>")
+        document.write("</table>")
+    </script>
+</body>
+</html>
