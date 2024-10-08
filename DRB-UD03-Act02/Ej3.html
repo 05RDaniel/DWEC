@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla 30x30</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+        td {
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            border: 1px solid #ddd; /* Bordes finos para visualizar cada celda */
+        }
+    </style>
+</head>
+<body>
+    <div id="tabla-container"></div>
+
+    <script>
+            const tabla = document.createElement('table'); // Crear la tabla
+
+            for (let i = 0; i < 30; i++) { // Crear las filas
+                const fila = document.createElement('tr');
+
+                for (let j = 0; j < 30; j++) { // Crear las celdas dentro de cada fila
+                    const celda = document.createElement('td');
+                    fila.appendChild(celda); // Agregar celda a la fila
+                }
+
+                tabla.appendChild(fila); // Agregar fila a la tabla
+            }
+
+            // Añadir la tabla al contenedor en el DOM
+            const container = document.getElementById('tabla-container');
+            container.appendChild(tabla);
+        
+
+        // Llamar a la función para crear la tabla al cargar la página
+        crearTabla30x30();
+    </script>
+</body>
+</html>

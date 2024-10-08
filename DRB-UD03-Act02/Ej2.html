@@ -1,61 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="stylesheet" href="style.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
     <script>
-        name = prompt("Introduce nombre");
-        surnames = prompt("Introduce apellidos");
-        bronDate = prompt("Introduce fecha de nacimiento (XX-XX-XXXX)");
-        address = prompt("Introduce direccion (Calle XXXX nº XXXX Pta XXXX)");
-        poblation = prompt("Introduce pobación (Codigo Postal - Población)");
-        languages = prompt("Introduce idiomas (XX XX XX)");
-        children = prompt("Introduce nombre de hij@s (XX-XX-XX)");
+      name = prompt("Introduce nombre");
+      surnames = prompt("Introduce apellidos");
+      bornDate = prompt("Introduce fecha de nacimiento (XX-XX-XXXX)");
+      expresionRegular = /\s*-\s*/;
+      date = bornDate.split(expresionRegular);
+      today = new Date();
+      años = today.getFullYear() - date[2] + 1;
+      if (
+        date[1] < today.getMonth() + 1 ||
+        (date[1] == today.getMonth() + 1 && date[0] <= today.getDate())
+      ) {
+        años--;
+      }
+      address = prompt("Introduce direccion (Calle XXXX nº XXXX Pta XXXX)");
+      index1=address.indexOf("Calle")
+      index2=address.indexOf("nº")
+      index3=address.indexOf("Pta")
+      sub1 = address.substr((index1+6),(index2-(index1+6)))
+      sub2 = address.substr((index2+3),(index3-(index2+3)))
+      sub3 = address.substr((index3+4))
+      poblation = prompt("Introduce pobación (Codigo Postal - Población)");
+      poblation2 = poblation.split(expresionRegular);
+      languages = prompt("Introduce idiomas (XX XX XX)");
+      languages2 = languages.split(" ");
+      languagesF = "<tr><td>Idiomas</td>"
+      for (i = 0;i < languages2.length; i++){
+        languagesF += "<td>" + languages2[i] + "</td>"
+            if (i!=languages2.length-1){
+                languagesF += "</tr><tr><td></td>"
+            }
+      } languagesF += "</tr>"
+      children = prompt("Introduce nombre de hij@s (XX-XX-XX)");
+      children2 = children.split(expresionRegular);
     </script>
 
     <table>
-        <tr>
-            <td>Nombre</td>
-            <td id="nombre"></td>
-        </tr>
-        <tr>
-            <td>Edad</td>
-            <td id="edad"></td>
-        </tr>
-        <tr>
-            <td>Calle</td>
-            <td id="calle"></td>
-        </tr>
-        <tr>
-            <td>Patio</td>
-            <td id="patio"></td>
-        </tr>
-        <tr>
-            <td>Puerta</td>
-            <td id="puerta"></td>
-        </tr>
-        <tr>
-            <td>Código postal</td>
-            <td id="cp"></td>
-        </tr>
-        <tr>
-            <td>Población</td>
-            <td id="polacion"></td>
-        </tr>
-        <tr id="idiomas">
-
-        </tr>
-        <tr>
-            <td>Num hijos</td>
-            <td id="hijos"></td>
-        </tr>
+      <tr>
+        <td colspan="2" id="header">Datos del Ciudadano</td>
+      </tr>
+      <tr>
+        <td>Nombre</td>
+        <td id="nombre"></td>
+      </tr>
+      <tr>
+        <td>Edad</td>
+        <td id="edad"></td>
+      </tr>
+      <tr>
+        <td>Calle</td>
+        <td id="calle"></td>
+      </tr>
+      <tr>
+        <td>Patio</td>
+        <td id="patio"></td>
+      </tr>
+      <tr>
+        <td>Puerta</td>
+        <td id="puerta"></td>
+      </tr>
+      <tr>
+        <td>Código postal</td>
+        <td id="cp"></td>
+      </tr>
+      <tr>
+        <td>Población</td>
+        <td id="poblacion"></td>
+      </tr>
+      <tbody id="idiomas"></tbody>
+      <tr>
+        <td>Num hijos</td>
+        <td id="hijos"></td>
+      </tr>
     </table>
 
     <script>
-        document.getElementById("nombre").innerHTML="Hola"
+      document.getElementById("nombre").innerHTML = name + " " + surnames;
+      document.getElementById("edad").innerHTML = años + " años";
+      document.getElementById("calle").innerHTML = sub1;
+      document.getElementById("patio").innerHTML = sub2;
+      document.getElementById("puerta").innerHTML = sub3;
+      document.getElementById("cp").innerHTML = poblation2[0];
+      document.getElementById("poblacion").innerHTML = poblation2[1];
+      document.getElementById("idiomas").innerHTML = languagesF;
+      document.getElementById("hijos").innerHTML = children2.length;
     </script>
   </body>
 </html>
