@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+        name = prompt("Introduce nombre");
+        surnames = prompt("Introduce apellidos");
+        bronDate = prompt("Introduce fecha de nacimiento (XX-XX-XXXX)");
+        address = prompt("Introduce direccion (Calle XXXX nº XXXX Pta XXXX)");
+        poblation = prompt("Introduce pobación (Codigo Postal - Población)");
+        languages = prompt("Introduce idiomas (XX XX XX)");
+        children = prompt("Introduce nombre de hij@s (XX-XX-XX)");
+    </script>
+
+    <table>
+        <tr>
+            <td>Nombre</td>
+            <td id="nombre"></td>
+        </tr>
+        <tr>
+            <td>Edad</td>
+            <td id="edad"></td>
+        </tr>
+        <tr>
+            <td>Calle</td>
+            <td id="calle"></td>
+        </tr>
+        <tr>
+            <td>Patio</td>
+            <td id="patio"></td>
+        </tr>
+        <tr>
+            <td>Puerta</td>
+            <td id="puerta"></td>
+        </tr>
+        <tr>
+            <td>Código postal</td>
+            <td id="cp"></td>
+        </tr>
+        <tr>
+            <td>Población</td>
+            <td id="polacion"></td>
+        </tr>
+        <tr id="idiomas">
+
+        </tr>
+        <tr>
+            <td>Num hijos</td>
+            <td id="hijos"></td>
+        </tr>
+    </table>
+
+    <script>
+        document.getElementById("nombre").innerHTML="Hola"
+    </script>
+  </body>
+</html>

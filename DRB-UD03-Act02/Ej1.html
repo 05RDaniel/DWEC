@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bowser/1.9.4/bowser.min.js"></script>
+
+    <script>
+      function write() {
+        subventana = window.open("", "", "width=350,height=250");
+        subventana.document.write("<h3>Ejemplo de ventana nueva</h3>");
+        subventana.document.write(
+          "<br><p>URL completa: ",
+          location.href,
+          "</p>"
+        );
+        subventana.document.write(
+          "<br><p>Protocolo utilizado: ",
+          location.protocol,
+          "</p>"
+        );
+        subventana.document.write("<br><p>Navegador: ", bowser.name, "</p>");
+        subventana.document.write(
+          "<br><p>Java habilitado: ",
+          navigator.javaEnabled(),
+          "</p>"
+        );
+        subventana.document.write(
+          "<iframe width='800' height='600' src='www.google.esy'></iframe>"
+        );
+      }
+      function getMonth(mes){
+        switch (mes){
+            case 1:
+            mes = "Enero"
+            break;
+            case 2:
+            mes = "Febrero"
+            break;
+            case 3:
+            mes = "Marzo"
+            break;
+            case 4:
+            mes = "Abril"
+            break;
+            case 5:
+            mes = "Mayo"
+            break;
+            case 6:
+            mes = "Junio"
+            break;
+            case 7:
+            mes = "Julio"
+            break;
+            case 8:
+            mes = "Agosto"
+            break;
+            case 9:
+            mes = "Septiembre"
+            break;
+            case 10:
+            mes = "Octubre"
+            break;
+            case 11:
+            mes = "Noviembre"
+            break;
+            case 12:
+            mes = "Diciembre"
+            break;
+        }
+        return mes;
+      }
+      function getHigher(nums){
+      i = 0;
+      max = 0;
+      do {
+        num = nums[i];
+        num>max?max=num:null;
+        i++
+      } while (i < nums.length);
+      return  max;
+      }
+
+      document.write("<h1>TAREA DWEC03</h1><hr/>");
+      fullname = prompt("Introduce nombre y apellidos");
+      day = parseInt(prompt("Introduce tu dia de nacimiento"))
+      month = parseInt(prompt("Introduce tu mes de nacimiento"))
+      year = parseInt(prompt("Introduce tu año de nacimiento"))
+      document.write("Buenos dias ", fullname, "<br>");
+      document.write(
+        "Tu nombre tiene ",
+        fullname.length,
+        " caracteres, incluidos espacios<br>"
+      );
+      document.write(
+        "La primera A de tu nombre está en la posición ",
+        fullname.indexOf("a"),
+        "<br>"
+      );
+      document.write(
+        "La última A de tu nombre está en la posición ",
+        fullname.lastIndexOf("a"),
+        "<br>"
+      );
+      document.write(
+        "Tu nombre sin las tres primeras letras es ",
+        fullname.substring(3),
+        "<br>"
+      );
+      document.write(
+        "Tu nombre todo en mayúsculas es ",
+        fullname.toUpperCase(),
+        "<br>"
+      );
+      today = new Date();
+      años = today.getFullYear() - year;
+      años = today.getFullYear() - year;
+      if (month < today.getMonth() + 1 ||  (month == today.getMonth() + 1 && day <= today.getDate())) {
+        años--;
+      }
+      document.write("Tu edad es ",años," años<br>");
+      document.write("Naciste un feliz ",getMonth(month)," del año ",year,"<br>");
+      document.write("El coseno de 180 es ",Math.cos(180),"<br>");
+      nums = [34,67,23,75,35,19]
+      document.write("El número mayor de (34,67,23,75,35,19) es: ",getHigher(nums),"<br>");
+      document.write("Ejemplo de número al azar ",Math.random(),"<br>");
+      write();
+    </script>
+  </body>
+</html>
