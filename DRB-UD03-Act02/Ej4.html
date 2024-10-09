@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+<body>
+    <iframe id="videoFrame" allow="autoplay"></iframe>
+    <br>
+    <button onclick="mostrarURL()">Compartir</button>
+    <script>
+        // Array de vídeos (el único que youtube no bloquea es el segundo)
+        videos = [
+            "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1",
+            "https://www.youtube.com/embed/B_HSa1dEL9s?autoplay=1",
+            "https://www.youtube.com/embed/89dGC8de0CA?autoplay=1",
+            "https://www.youtube.com/embed/iUXs4Nt3Y7Y?autoplay=1",
+            "https://www.youtube.com/embed/sMvPN3349og?autoplay=1",
+            "https://www.youtube.com/embed/rd8ZFtD5rM8?autoplay=1",
+            "https://www.youtube.com/embed/udBLU0Y_G2s?autoplay=1",
+            "https://www.youtube.com/embed/44kityInDvM?autoplay=1",
+            "https://www.youtube.com/embed/f41rIgQF-Mw?autoplay=1",
+            "https://www.youtube.com/embed/KJ2sDvWoQR0?autoplay=1"
+        ];
+
+        function cargarVideo() {
+            indiceAleatorio = Math.floor(Math.random() * videos.length);
+            seleccionado = videos[indiceAleatorio];
+            document.getElementById("videoFrame").src = seleccionado;
+        }
+        function mostrarURL(){
+            window.alert(seleccionado)
+        }
+
+        window.onload = cargarVideo;
+    </script>
+</body>
+</html>

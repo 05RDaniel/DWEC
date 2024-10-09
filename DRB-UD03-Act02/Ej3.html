@@ -1,46 +1,50 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabla 30x30</title>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
     <style>
-        table {
-            border-collapse: collapse;
-            margin: 20px auto;
-        }
-        td {
-            width: 10px;
-            height: 10px;
-            background-color: white;
-            border: 1px solid #ddd; /* Bordes finos para visualizar cada celda */
-        }
+      td {
+        width: 10px;
+        height: 10px;
+        border: 1px solid white;
+      }
     </style>
-</head>
-<body>
-    <div id="tabla-container"></div>
+  </head>
+  <body>
+    <div id="div"></div>
 
     <script>
-            const tabla = document.createElement('table'); // Crear la tabla
+        // Función para generar un número hexadecimal aleatorio para escoger un color
+      function generarColor () {
+        letras = ["0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F"];
+        color = "#";
+        for (i = 0; i < 6; i++) {
+          color += letras[Math.floor(Math.random() * 16)];
+        }
+        return color;
+      };
 
-            for (let i = 0; i < 30; i++) { // Crear las filas
-                const fila = document.createElement('tr');
+    //   Función para crear una tabla y colorearla utilizando la función anterior
+      function crearTabla () {
+        tabla = document.createElement("table");
 
-                for (let j = 0; j < 30; j++) { // Crear las celdas dentro de cada fila
-                    const celda = document.createElement('td');
-                    fila.appendChild(celda); // Agregar celda a la fila
-                }
+        for (let i = 0; i < 30; i++) {
+          fila = document.createElement("tr");
+          for (let j = 0; j < 30; j++) {
+            celda = document.createElement("td");
+            celda.style.backgroundColor = generarColor();
+            fila.appendChild(celda);
+          }
+          tabla.appendChild(fila);
+        }
 
-                tabla.appendChild(fila); // Agregar fila a la tabla
-            }
+        container = document.getElementById("div");
+        container.appendChild(tabla);
+      };
 
-            // Añadir la tabla al contenedor en el DOM
-            const container = document.getElementById('tabla-container');
-            container.appendChild(tabla);
-        
-
-        // Llamar a la función para crear la tabla al cargar la página
-        crearTabla30x30(); 
+      crearTabla();
     </script>
-</body>
+  </body>
 </html>
