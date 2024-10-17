@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      div{
+        text-align: center;
+      }
+      img{
+        width: 100px;
+        height: 100px;
+      }
+    </style>
+    <script>
+      function over(elemento){
+        elemento.style.width = "200px";
+        elemento.style.height = "200px";
+        elemento.style.borderColor = "red";
+        elemento.style.borderStyle = "solid";
+        elemento.style.borderWidth= "3px";
+      }
+      function out(elemento){
+        elemento.style.width = "100px";
+        elemento.style.height = "100px";
+        elemento.style.borderStyle = "none";
+      }
+    </script>
+    <div><img src="panda.jpg" onmouseover="over(this)" onmouseout="out(this)"></div>
+    <div><img src="panda.jpg" onmouseover="over(this)" onmouseout="out(this)"></div>
+    <div><img src="panda.jpg" onmouseover="over(this)" onmouseout="out(this)"></div>
+  </body>
+</html>

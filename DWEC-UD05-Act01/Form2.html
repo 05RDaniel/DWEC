@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recibir Datos</title>
+  </head>
+  <body>
+    <div id="div"></div>
+
+    <script>
+      // Función para obtener los parámetros de la URL
+      function obtenerParametrosUrl() {
+        const params = new URLSearchParams(window.location.search);
+        return params.get('name'); // Obtener el valor del parámetro 'name'
+      }
+
+      // Obtener el valor del nombre de la URL
+      const nombre = obtenerParametrosUrl();
+
+      // Mostrar el valor en el div
+      if (nombre) {
+        document.getElementById('div').innerHTML = `Nombre: ${nombre}`;
+      } else {
+        document.getElementById('div').innerHTML = 'No se recibió ningún nombre';
+      }
+    </script>
+  </body>
+</html>

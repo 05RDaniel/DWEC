@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="./Ej1.js"></script>
+    <p id="div">
+    </p>
+    <script>
+      /* Creación de los onjetos */
+      h1 = new Hospital(18,"Hospital Ribera","Ble",999,"Bli",333)
+      m1 = new Medico(27,"MedicoDigestivo","ape","dni","dir",123,"pob",14,"27/3/2014","Digestivo",1000,h1)
+      m2 = new Medico(32,"MedicoTraumatologo","ape","dni","dir",123,"pob",14,"27/3/2014","Digestivo",1000,h1)
+      /* Modificación del sueldo del segundo médico */
+      m2.cambiarSueldo(2300)
+      /* Mostrar los datos del hospital */
+      document.write(h1.codHospital+"<br>"+h1.nombreHospital+"<br>"+h1.direccion+"<br>"+h1.telefono+"<br>"+h1.poblacion+"<br>"+h1.codPostal+"<br>")
+      document.write("<br>")
+      /* Calcular y aplicar retenciones a ambos médicos */
+      m1.retencionMedico(0.1)
+      m2.retencionMedico(0.24)
+      /* Mostrar los datos de ambos médicos */
+      document.write(m1.mostrarDatos())
+      document.write("<br>")
+      document.write("<br>")
+      document.write(m2.mostrarDatos())
+    </script>
+  </body>
+</html>

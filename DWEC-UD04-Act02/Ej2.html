@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+        array = []
+        /* Bucle para rellenar el array hasta recibir 0 */
+      do{
+        a = prompt("Enter a number");
+        if (a!=0){
+            array.push(a)
+        }
+      } while(a != 0)
+
+      /* Muestra la longitud del array */
+      document.write(array.length+"<br>")
+
+      /* Bucle para recorrer el array */
+      for (i=array.length-1;i>=0;i--){
+
+        /* Muestra el elemento */
+        document.write(array[i]+"<br>")
+        
+        /* Elimina el último elemento */
+        array.pop()
+      }
+
+      /* Muestra la longitud del array */
+      document.write(array.length)
+    </script>
+  </body>
+</html>

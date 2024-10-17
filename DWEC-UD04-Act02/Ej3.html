@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      div#principal{
+        height: 500px;
+        width: 100%;
+        overflow: scroll;
+      }
+      div{
+        width: 33%;
+        display: flex;
+      }
+    </style>
+    <!-- Un elemento que muestra un mensaje con el número de citas pendientes
+    que se actualizará cada vez que se añada una cita o se atienda a un paciente -->
+    <p id="pendientes">Citas pendientes: 0</p>
+
+    <!-- div con tres divs anidados que mostrarán la información con un formato
+    adecuado -->
+    <div id="principal"><div id="numC">Numero consulta<br><br></div><div id="nomP">Nombre paciente<br><br></div><div id="nomM">Nombre médico<br><br></div></div>
+    
+    <!-- Un botón para pedir cita -->
+    <button onclick="citarse()">Pedir cita</button>
+
+    <script>
+      num=0
+      realizadas=0
+      i=0
+      consultas = ["Marcos","Juan","Teresa"]
+      pacientes = []
+      citas = []
+
+      /* Función que pide nombre, crea una cita y añade el nombre del paciente
+      a la lista de pacientes  y la cita a la lista de citas, ademas de actualizar
+      el número de citas pendientes */
+      function citarse(){
+        nombre=prompt("Introduce tu nombre")
+       cita = {"number":i,"name":nombre}
+       pacientes.push(nombre)
+       citas.push(cita)
+       document.getElementById("pendientes").innerHTML=("Citas pendientes: "+(citas.length-realizadas))
+      i++
+      }
+
+      /* Genera un botón por cada médico existente */
+      consultas.forEach(element => {
+       document.write("<button onclick=mostrar(\"" + element + "\")>Consulta de "+element+"</button>")
+      });
+
+      /* Muestra numero de consulta, nombre de paciente y nombre del médico,
+      cada uno en su respectivo contenedor. Además, actualiza el número
+      de citas pendientes, mostrando un mensaje en caso de que no quede
+      ninguna pendiente */
+      function mostrar(medico){
+      if(!(num>=citas.length)){document.getElementById("numC").innerHTML+=citas[num].number+"<br>"
+      document.getElementById("nomP").innerHTML+=citas[num].name+"<br>"
+      document.getElementById("nomM").innerHTML+=medico+"<br>"
+      realizadas++
+      document.getElementById("pendientes").innerHTML=("Citas pendientes: "+(citas.length-realizadas))
+      num++} else {window.alert("No quedan citas pendientes")}
+      } 
+   </script>
+  </body>
+</html>
