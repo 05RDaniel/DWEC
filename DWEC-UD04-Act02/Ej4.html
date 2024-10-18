@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="./Ej4.js"></script>
+    <script>
+      /* Creo un objeto de cada tipo y utilizpo los métodos de la clase Factura */
+      e = new Empresa("Carglass","C/ pedro","666-666-666","961")
+      c = new Cliente("Pepe","C/ pedro","666-666-666","961")
+      dF = new DetalleFactura("Descripción",28,17)
+      tF = new TotalesFactura(50,21,"Tarjeta")
+      f = new Factura(e,c,dF,tF)
+      f.calculaTotal()
+      f.MuestraTotal()
+      document.write("<br>")
+      document.write("<br>")
+      f.imprimirFactura()
+   </script>
+  </body>
+</html>
