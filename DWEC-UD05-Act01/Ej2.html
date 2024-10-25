@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulario</title>
+  </head>
+  <body>
+    <form action="./Form2.html" method="get" id="data">
+      Nombre:
+      <input type="text" name="nombre" minlength="3" maxlength="30">
+      <br>
+      Apellidos:
+      <input type="text" name="apellidos" minlength="3" maxlength="60">
+      <br>
+      Dirección:
+      <input type="text" name="direccion" minlength="3" maxlength="50">
+      <br>
+      Población:
+      <input type="text" name="poblacion" minlength="3" maxlength="30">
+      <br>
+      Código postal:
+      <input type="text" name="codP" pattern="[0-9]{5}">
+      <br>
+      Teléfono:
+      <input type="text" name="tlf" pattern="\([0-9]{3}\) [0-9]{3} - [0-9]{3}">
+      <br>
+      Móvil:
+      <input type="text" name="movil" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}">
+      <br>
+      DNI:
+      <input type="text" name="dni" pattern="[0-9]{2}\.[0-9]{3}\.[0-9]{3}-[A-Z]">
+      <br>
+      Num cuenta corriente:
+      <input type="text" name="numC" pattern="[0-9]{4}-[0-9]{4}-[0-9]{2}-[0-9]{10}">
+      <br>
+      Cuota mensual:
+      <input type="number" name="tlf" min="0" step="any">
+      <br>
+      Fecha nacimiento:
+      <input type="date" name="tlf">
+      <br>
+      Num hijos:
+      <input type="num" name="tlf" min="0">
+      <br>
+      Correo electrónico:
+      <input type="email" name="email">
+      <br>
+      <input type="image" alt="submit" name="enviar" src="panda.jpg" height="50">
+
+    </form>
+  </body>
+</html>

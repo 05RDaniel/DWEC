@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulario</title>
+  </head>
+  <body>
+    <div id="externo">
+      <div id="general">
+        <h1>Alta de Personas</h1>
+        <br>
+      <p>Rellene los siguientes datos y envíelos para insertar nueva persona:</p>
+      <form action="./Form2.html" method="get" id="data">
+        <table>
+          <tr>
+            <td>DNI:</td>
+            <td>      <input type="text" name="dni" id="dni" pattern="([0-9]{2}\.[0-9]{3}\.[0-9]{3}-[A-Z])+" required />
+            </td>
+          </tr>
+          <tr>
+            <td>Nombre:</td>
+            <td><input type="text" name="nombre" id="nombre" required/></td>
+          </tr>
+          <tr>
+            <td>Foto:</td>
+            <td><input type="text" name="foto" /></td>
+          </tr>
+          <tr>
+            <td>Edad:</td>
+            <td><input type="number" name="nombre" min="0" /></td>
+          </tr>
+          <tr>
+            <td>Población:</td>
+            <td><select name="poblacion" id="poblacion" required>
+              <option>Seleccione poblacion</option>
+              <option value="Madrid">Madrid</option>
+              <option value="Barcelona">Barcelona</option>
+              <option value="Valencia">Valencia</option>
+            </select></td>
+          </tr>
+          <tr>
+            <td>Observaciones:</td>
+            <td><textarea rows="6" cols="60"></textarea></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><button type="submit">Enviar</button></td>
+          </tr>
+        </table>
+      </form>
+      </div>
+    </div>
+
+    <style>
+      h1{
+        margin-top: 0px;
+      }
+      div#externo{
+        display: grid;
+        place-items: center;
+      }
+      div#general{
+        border: solid,3px,lightblue;
+        width: 500px;
+      }
+      input:required {
+        background-color: lightgoldenrodyellow;
+      }
+      select:required {
+        background-color: lightgoldenrodyellow;
+      }
+      td>*{
+        background-color: lightgray;
+      }
+      textarea{
+        width: 200px;
+      }
+    </style>
+
+    <script type="text/javascript">
+      let dni = document.getElementById("dni");
+      dni.addEventListener("input", function () {
+        this.style="background-color:white";
+      });
+      dni.addEventListener("invalid", function () {
+        this.style="background-color:orange";
+      });
+      let nombre = document.getElementById("nombre");
+      nombre.addEventListener("input", function () {
+        this.style="background-color:lightgoldenrodyellow";
+      });
+      nombre.addEventListener("invalid", function () {
+        this.style="background-color:orange";
+      });
+      let poblacion = document.getElementById("poblacion");
+      poblacion.addEventListener("input", function () {
+        this.style="background-color:white";
+      });
+      poblacion.addEventListener("invalid", function () {
+        this.style="background-color:orange";
+      });
+    </script>
+  </body>
+</html>

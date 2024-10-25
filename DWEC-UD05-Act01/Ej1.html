@@ -3,34 +3,116 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Formulario</title>
   </head>
   <body>
-    <style>
-      div{
-        text-align: center;
-      }
-      img{
-        width: 100px;
-        height: 100px;
-      }
-    </style>
-    <script>
-      function over(elemento){
-        elemento.style.width = "200px";
-        elemento.style.height = "200px";
-        elemento.style.borderColor = "red";
-        elemento.style.borderStyle = "solid";
-        elemento.style.borderWidth= "3px";
-      }
-      function out(elemento){
-        elemento.style.width = "100px";
-        elemento.style.height = "100px";
-        elemento.style.borderStyle = "none";
-      }
-    </script>
-    <div><img src="panda.jpg" onmouseover="over(this)" onmouseout="out(this)"></div>
-    <div><img src="panda.jpg" onmouseover="over(this)" onmouseout="out(this)"></div>
-    <div><img src="panda.jpg" onmouseover="over(this)" onmouseout="out(this)"></div>
+    <form action="./Form2.html" method="get" id="data">
+      <p>Tipo de inmueble</p>
+      <select name="tipoInmueble">
+        <option></option>
+        <option value="piso">
+          Piso
+        </option>
+        <option value="adosado">
+          Adosado
+        </option>
+        <option value="parcela">
+          Parcela
+        </option>
+        <option value="casa">
+          Casa
+        </option>
+        <option value="chalet">
+          Chalet
+        </option>
+        <option value="local">
+          Local
+        </option>
+        <option value="nave">
+          Nave
+        </option>
+      </select>
+      <p>Provincia</p>
+      <input type="text" list="provincia">
+        <datalist id="provincia">
+          <option value="Madrid"></option>
+          <option value="Valencia"></option>
+          <option value="Barcelona"></option>
+          <option value="Murcia"></option>
+        </datalist>
+      </input>
+      <p>Ubicación</p>
+      <select name="ubicacion" size="4" multiple>
+        <option value="centro">Centro</option>
+        <option value="sur">Sur</option>
+        <option value="este">Este</option>
+        <option value="oeste">Oeste</option>
+        <option value="ronda">Ronda</option>
+        <option value="periferia">Periferia</option>
+      </select>
+      <p>Precio máximo</p>
+      <input type="number" max="500000" min="0" step="10000" value="0"> €</input>
+      <p>Metros mínimos</p>
+      <input type="number" max="5000" min="0" value="0"> metros</input>
+      <p>Altura mínima</p>
+      <input type="number" max="40" min="0" value="0"> metros</input>
+      <p>Mínimo de habitaciones</p>
+      <input type="number" max="10" min="1" value="0"> habitaciones</input>
+      <p>Mínimo de baños</p>
+      <input type="number" max="5" min="1" value="0"> baños</input>
+      <p>Características</p>
+      <input type="checkbox" name="Calefacción" value="Calefaccion">Calefacción</input>
+      <br>
+      <input type="checkbox" name="Aire acondicionado" value="Aire">Aire acondicionado</input>
+      <br>
+      <input type="checkbox" name="Garaje" value="Garaje">Garaje</input>
+      <br>
+      <input type="checkbox" name="Trastero" value="Trastero">Trastero</input>
+      <br>
+      <input type="checkbox" name="Piscina" value="Piscina">Piscina</input>
+      <br>
+      <input type="checkbox" name="Ascensor" value="Ascensor">Ascensor</input>
+      <br>
+      <input type="checkbox" name="Exterior" value="Exterior">Exterior</input>
+      <br>
+      <input type="checkbox" name="Terraza" value="Terraza">Terraza</input>
+      <br>
+      <input type="checkbox" name="Amueblado" value="Amueblado">Amueblado</input>
+      <p>Distancia a la playa</p>
+      <input type="range" min="50" max="2000" value="50">
+      <fieldset>
+        <legend>Estado</legend>
+        <input type="radio" name="status">Indiferente
+      <br>
+        <input type="radio" name="status">Nuevo
+      <br>
+      <input type="radio" name="status">Buen estado
+      <br>
+      <input type="radio" name="status">Para reformar
+      </fieldset>
+      Nombre:
+      <input type="text" name="nombre" maxlength="35">
+      <br>
+      Apellidos:
+      <input type="text" name="apellidos" maxlength="75">
+      <br>
+      Correo electrónico:
+      <input type="email" name="email">
+      <br>
+      Fecha nacimiento:
+      <input type="date" name="fechaN">
+      <br>
+      DNI:
+      <input type="password" name="dni">
+      <br>
+      Comentario:
+      <br>
+      <textarea rows="6" cols="60"></textarea>
+      <br>
+      <input type="date" name="fechaOculta" value="" hidden>
+      <input type="image" alt="submit" name="enviar" src="panda.jpg" height="50">
+      <button type="reset">Restablecer formulario</button>
+      <br>
+    </form>
   </body>
 </html>
