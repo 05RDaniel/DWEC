@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulario</title>
+  </head>
+
+  <body>
+    <div id="externo">
+      <div id="general">
+        <h1>Formulario de logueo personalizado</h1>
+        <br />
+        <form>
+          <table>
+            <tr>
+              <td>Usuario:</td>
+              <td><input type="text" name="user" id="user" /></td>
+            </tr>
+            <tr>
+              <td>Password:</td>
+              <td><input type="password" name="password" id="password" /></td>
+            </tr>
+            <tr>
+              <td>Color fondo:</td>
+              <td><input type="color" name="color" id="color" /></td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" id="recuerdame" />Recordar</td>
+              <td>
+                <button type="submit" onclick="guardarDatos()">Enviar</button>
+              </td>
+            </tr>
+          </table>
+        </form>
+      </div>
+    </div>
+
+    <style>
+      h1 {
+        margin-top: 0px;
+      }
+
+      div#externo {
+        display: grid;
+        place-items: center;
+      }
+
+      div#general {
+        border: dotted 3px black;
+        width: 500px;
+        background-color: lightgray;
+      }
+    </style>
+
+    <script type="text/javascript">
+      function setCookie(nombre, valor, dias) {
+        var fecha = new Date();
+        fecha.setTime(fecha.getTime() + dias * 24 * 60 * 60 * 1000);
+        document.cookie =
+          nombre + "=" + valor + ";expires=" + fecha.toUTCString() + ";path=/";
+      }
+
+      function getCookie(nombre) {
+        var name = nombre + "=";
+        var galleta = decodeURIComponent(document.cookie);
+        var ca = galleta.split(";");
+        for (var i = 0; i < ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) === " ") {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) === 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return "";
+      }
+
+      function guardarDatos() {
+        let usuario = document.getElementById("user").value;
+        let clave = document.getElementById("password").value;
+        let color = document.getElementById("color").value;
+        let recordar = document.getElementById("recuerdame").checked;
+
+        if (recordar) {
+          setCookie("usuario", usuario, 30);
+          setCookie("clave", clave, 30);
+          setCookie("color", color, 30);
+        }
+
+        document.body.style.backgroundColor = color;
+      }
+
+      function cargarDatos() {
+        let usuario = getCookie("usuario");
+        let clave = getCookie("clave");
+        let color = getCookie("color");
+
+        if (usuario) {
+          document.getElementById("user").value = usuario;
+        }
+        if (clave) {
+          document.getElementById("password").value = clave;
+        }
+        if (color) {
+          document.getElementById("color").value = color;
+          document.body.style.backgroundColor = color;
+        }
+      }
+
+      window.onload = cargarDatos;
+    </script>
+  </body>
+</html>
