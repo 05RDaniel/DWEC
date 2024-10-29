@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>TABLERO DE DIBUJO EN JAVASCRIPT</h3>
+    <div>
+      Haga CLICK en un color para comenzar a pintar
+      <table>
+        <tr id="colores">
+          <td id="t1" onclick="setSelect(this)"></td>
+          <td id="t2" onclick="setSelect(this)"></td>
+          <td id="t3" onclick="setSelect(this)"></td>
+          <td id="t4" onclick="setSelect(this)"></td>
+          <td id="t5" onclick="setSelect(this)"></td>
+          <td id="t6" onclick="setSelect(this)"></td>
+        </tr>
+        <tr id="estado">
+          <td colspan="6"></td>
+        </tr>
+      </table>
+    </div>
+    <br />
+    Haga CLICK en cualquier celda para activar/desactivar el Pincel
+    <br />
+    <br />
+    <div id="div"></div>
+  </body>
+
+  <script>
+    function crearTabla() {
+      tabla = document.createElement("table");
+
+      for (let i = 0; i < 30; i++) {
+        fila = document.createElement("tr");
+        for (let j = 0; j < 30; j++) {
+          celda = document.createElement("td");
+          fila.appendChild(celda);
+        }
+        tabla.appendChild(fila);
+      }
+
+      container = document.getElementById("div");
+      container.appendChild(tabla);
+    }
+    crearTabla();
+
+    color = "null";
+    function setSelect(este) {
+        window.alert("Iniciado")
+        if (document.getElementsByClassName("select").length > 0) {
+            window.alert(document.getElementsByClassName("select")[0].id);
+      }
+      
+        este.className = "select";
+        if (document.getElementsByClassName("select").length > 1) {
+        document.getElementsByClassName("select").splice(0, 1);
+      }
+        window.alert(document.getElementsByClassName("select")[0].id);
+      
+    }
+  </script>
+  <style>
+    div {
+      margin: 0 auto;
+      padding: 0;
+      text-align: center;
+    }
+    table {
+      border: solid, 1px, black;
+      margin: auto;
+    }
+    td {
+      border: solid, 1px, black;
+      width: 12.5px;
+      height: 12.5px;
+    }
+    tr#colores > td {
+      width: 75px;
+      height: 25px;
+    }
+    td#t1 {
+      background-color: yellow;
+    }
+    td#t2 {
+      background-color: greenyellow;
+    }
+    td#t3 {
+      background-color: black;
+    }
+    td#t4 {
+      background-color: red;
+    }
+    td#t5 {
+      background-color: blue;
+    }
+    td#t6 {
+      background-color: white;
+    }
+  </style>
+</html>

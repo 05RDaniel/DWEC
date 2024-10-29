@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Librerias Valencia</h1>
+    <p id="title">Título: <input type="text"></p>
+    <p id="author">Autor: <input type="text"></p>
+    <p id="price">Precio: <input type="text"></p>
+    <p id="edit">
+      Editorial:
+      <select id="nameEdit" style="width: 200px"></select>
+    </p>
+    <p id="title">
+      <button id="addEdit" onclick="addEdit()">Añadir editorial</button>
+      <input type="text" id="newEdit" />
+    </p>
+    <p id="title">Ubicación:</p>
+    <ul id="location"></ul>
+    <p>
+      <button id="more" onclick="more()">+</button
+      ><button id="less" onclick="less()">-</button>
+    </p>
+  </body>
+
+  <script>
+    editorial = [];
+    locations = [];
+    locations.push("A");
+    locations.push("B");
+    locations.push("C");
+    locations.push("D");
+    editorial.push("Uno");
+    editorial.push("Dos");
+    editorial.push("Tres");
+
+    /* Un forerach para añadir los elementos ya existentes al deplegable de editoriales */
+    editorial.forEach((element) => {
+      document.getElementById("nameEdit").innerHTML +=
+        "<option>" + element + "</option>";
+    });
+
+    /* Mostrar una ubicación inicialmente */
+    i=1;
+      document.getElementById("location").innerHTML += "<li>Calle " + locations[0] + "</li>";
+
+    /* Una funcion para añadir una nueva editorial, recogiendo el texto del campo correspondiente
+    y añadiendolo al array y al select */
+    function addEdit() {
+      if (document.getElementById("newEdit").value != "") {
+        editorial.push(document.getElementById("newEdit").value);
+        document.getElementById("nameEdit").innerHTML +=
+          "<option>" + document.getElementById("newEdit").value + "</option>";
+        window.alert("Editorial añadida");
+        document.getElementById("newEdit").value = "";
+      }
+    }
+
+    /* Función para incrementar en uno el número de elementos a mostrar y mostrarlos */
+    function more() {
+      if (!(i == locations.length)) {
+        i++;
+        document.getElementById("location").innerHTML = "";
+        for (j = 0; j < i; j++) {
+          document.getElementById("location").innerHTML +=
+            "<li>Calle " + locations[j] + "</li>";
+        }
+      }
+    }
+
+    /* Función para decrementar en uno el número de elementos a mostrar y mostrarlos */
+    function less() {
+      if (!(i == 1)) {
+        i--;
+        document.getElementById("location").innerHTML = "";
+        for (j = 0; j < i; j++) {
+          document.getElementById("location").innerHTML +=
+            "<li>Calle " + locations[j] + "</li>";
+        }
+      }
+    }
+  </script>
+</html>
