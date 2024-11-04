@@ -6,9 +6,13 @@
     <title>Document</title>
   </head>
   <body>
+    <!-- ADVERTENCIA
+     No he sabido hacerlo asignando la clase "seleccionado" como especifica el pdf, pero para no dejarlo sin entregar
+     he buscado una alternativa y lo he hecho de otra forma -->
     <h3>TABLERO DE DIBUJO EN JAVASCRIPT</h3>
     <div>
       Haga CLICK en un color para comenzar a pintar
+      <!-- Tabla básica para la selección de color -->
       <table>
         <tr id="colores">
           <td id="t1" onclick="setSelect(this)"></td>
@@ -18,8 +22,8 @@
           <td id="t5" onclick="setSelect(this)"></td>
           <td id="t6" onclick="setSelect(this)"></td>
         </tr>
-        <tr id="estado">
-          <td colspan="6"></td>
+        <tr>
+          <td colspan="6" id="estado">PINCEL DESACTIVADO</td>
         </tr>
       </table>
     </div>
@@ -31,6 +35,14 @@
   </body>
 
   <script>
+    // Función para obtener el color del elemento clicado
+    color = "null";
+    function setSelect(este) {
+      color = window.getComputedStyle(este).backgroundColor;
+    }
+    pincelActivado = false;
+
+    // Función para crear la tabla mediante document object model (DOM)
     function crearTabla() {
       tabla = document.createElement("table");
 
@@ -38,30 +50,31 @@
         fila = document.createElement("tr");
         for (let j = 0; j < 30; j++) {
           celda = document.createElement("td");
+          // Un evento que detecta si el ratón está sobre el elemento. Si lo está, y el pincel está activado, pintará la celda del color seleccionado
+          celda.addEventListener("mouseover", function () {
+            if (pincelActivado == true) {
+              this.style.backgroundColor = color;
+            }
+          });
+          // Evento que activa/desactiva el pincel según su estado anterior y modifica el texto en consecuencia
+          celda.addEventListener("click", function () {
+            if (pincelActivado == true) {
+              pincelActivado = false;
+              document.getElementById("estado").innerText =
+                "PINCEL DESACTIVADO";
+            } else {
+              pincelActivado = true;
+              document.getElementById("estado").innerText = "PINCEL ACTIVADO";
+            }
+          });
           fila.appendChild(celda);
         }
         tabla.appendChild(fila);
       }
-
       container = document.getElementById("div");
       container.appendChild(tabla);
     }
     crearTabla();
-
-    color = "null";
-    function setSelect(este) {
-        window.alert("Iniciado")
-        if (document.getElementsByClassName("select").length > 0) {
-            window.alert(document.getElementsByClassName("select")[0].id);
-      }
-      
-        este.className = "select";
-        if (document.getElementsByClassName("select").length > 1) {
-        document.getElementsByClassName("select").splice(0, 1);
-      }
-        window.alert(document.getElementsByClassName("select")[0].id);
-      
-    }
   </script>
   <style>
     div {

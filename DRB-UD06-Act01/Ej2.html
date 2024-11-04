@@ -24,13 +24,16 @@
     document.getElementById("img").src = img[0];
 
 
+    // Ejecutará la función "next" cada 3 segundos, a menos que se reinicie el intervalo
     intervalo = setInterval(next, 3000);
 
+        // Función para reiniciar el intervalo
         function reset(){
             clearInterval(intervalo)
             intervalo = setInterval(next, 3000);
         }
 
+        // Funciones que pasan a la siquiente o anterior imagen, llamando al final a la función para reiniciar el contador
     next()
     function next() {
       if (i == img.length-1) {
