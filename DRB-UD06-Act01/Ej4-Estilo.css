@@ -1,0 +1,59 @@
+
+    body{
+      background-color: lightgray;
+    }
+    .mina {
+      background-image: url("mina.png");
+      background-repeat: no-repeat;
+    }
+    .minaBum {
+      background-color: red;
+      background-image: url("mina.png");
+      background-repeat: no-repeat;
+    }
+    .one {
+      background-image: url("one.png");
+      background-repeat: no-repeat;
+    }
+    .two {
+      background-image: url("two.png");
+      background-repeat: no-repeat;
+    }
+    .three {
+      background-image: url("three.png");
+      background-repeat: no-repeat;
+    }
+    .four {
+      background-image: url("four.png");
+      background-repeat: no-repeat;
+    }
+    .five {
+      background-image: url("five.png");
+      background-repeat: no-repeat;
+    }
+    .six {
+      background-image: url("six.png");
+      background-repeat: no-repeat;
+    }
+    .seven {
+      background-image: url("seven.png");
+      background-repeat: no-repeat;
+    }
+    .eight {
+      background-image: url("eight.png");
+      background-repeat: no-repeat;
+    }
+    table {
+      border: solid 0.5px lightgray;
+      border-collapse: collapse;
+      position: absolute;
+    }
+    td {
+      border: solid 0.5px gray;
+      width: 15px;
+      height: 15px;
+    }
+    div{
+      border: solid 1px black;
+      width: 700px;
+    }
