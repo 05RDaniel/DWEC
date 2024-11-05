@@ -3,12 +3,12 @@
       background-color: lightgray;
     }
     .mina {
-      background-image: url("mina.png");
+      background-image: url("Mina.png");
       background-repeat: no-repeat;
     }
     .minaBum {
       background-color: red;
-      background-image: url("mina.png");
+      background-image: url("Mina.png");
       background-repeat: no-repeat;
     }
     .one {
@@ -43,6 +43,11 @@
       background-image: url("eight.png");
       background-repeat: no-repeat;
     }
+    .hidden {
+      background-image: url("hidden.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
     table {
       border: solid 0.5px lightgray;
       border-collapse: collapse;
@@ -52,8 +57,4 @@
       border: solid 0.5px gray;
       width: 15px;
       height: 15px;
-    }
-    div{
-      border: solid 1px black;
-      width: 700px;
     }
