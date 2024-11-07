@@ -2,6 +2,7 @@ casillaUno = 0;
 
 
 function filasColumnasMinas(a, b) {
+  /* Establece el numero de filas y columnas, de minas, detiene el contador y reinicia la casilla uno */
   stopit()
   document.getElementById("marcadas").innerHTML = "Número de minas  marcadas: 0";
   filasColumnas = a
@@ -10,6 +11,7 @@ function filasColumnasMinas(a, b) {
 }
 
 function crearTabla() {
+  /* Crea la tabla de juego */
   const tabla = document.createElement("table");
   for (let i = 0; i < filasColumnas; i++) {
     const fila = document.createElement("tr");
@@ -26,6 +28,7 @@ function crearTabla() {
 }
 
 function crearCovertura() {
+  /* Crea la tabla de covertura */
   const tabla = document.createElement("table");
   tabla.id = "covertura";
   for (let i = 0; i < filasColumnas; i++) {
@@ -35,9 +38,11 @@ function crearCovertura() {
       celda.id = "d-" + i + "-" + j;
       celda.className = "hidden";
       celda.addEventListener("click", function () {
+        /* Evento para ocultar la covertura */
         mostrar(celda);
       });
       celda.addEventListener("contextmenu", function () {
+        /* Evento para alternar entre oculto, marcado y desconocido */
         if (celda.className == "hidden") {
           celda.className = "marked";
         } else if (celda.className == "marked") {
@@ -48,6 +53,7 @@ function crearCovertura() {
         markCells();
       });
       celda.addEventListener("contextmenu", function inhabilitar(e) {
+        /* Evento para evitar el menú contextual */
         e.preventDefault();
       });
       fila.appendChild(celda);
@@ -60,6 +66,7 @@ function crearCovertura() {
 }
 
 function markCells() {
+  /* Función para actualizar el número de celdas marcadas y comprobar si el juego se ha terminado */
   document.getElementById("marcadas").innerHTML = "Número de minas  marcadas: " + document.getElementsByClassName("marked").length;
   if (document.getElementsByClassName("marked").length + document.getElementsByClassName("shown").length == filasColumnas * filasColumnas) {
     /* Si el número de casillas marcadas + el número de casillas mostradas es igual al número total de casillas */
@@ -71,6 +78,7 @@ function markCells() {
 }
 
 function mostrar(obj) {
+  /* Función para mostrar la celda */
   if (obj.className != "marked") {
     obj.className = "shown";
     idN = obj.id.split("-");
@@ -88,6 +96,7 @@ function mostrar(obj) {
 }
 
 function mostrarAdyacentes(idF) {
+  /* Función para mostrar todas las c eldas adyacentes y comprobar a su vez si es necesario mostrar más */
   const stack = [idF]; /* Guarda idF en un array */
   while (stack.length > 0) { /* Hasta que el array que almacena id esté vacío */
     const currentId = stack.pop(); /* elimina del array el último id del array, almacenándolo al mismo tiempo */
@@ -116,6 +125,7 @@ function mostrarAdyacentes(idF) {
 }
 
 function primerClick(idF) {
+  /* Función para controlar el primer click, iniciar el contador, establecer la casilla uno como la clicada y colocar minas y números */
   startTime = new Date();
   intervalo = setInterval(hora, 1000);
   document.getElementById(idF).className = "zero";
@@ -125,6 +135,7 @@ function primerClick(idF) {
 }
 
 function colocarMinas() {
+  /* Función para colocar minas en la tabla, comprobando los bordes, las casillas en la que ya hay una mina y la primera casilla clicada y sus adyacentes */
   let minasColocadas = 0;
   const initial = casillaUno.split("-");
   const primeraFila = parseInt(initial[1]);
@@ -152,11 +163,13 @@ function colocarMinas() {
 }
 
 function comprobarMinas(i, j) {
+  /* Función para comprobar si la casilla especificada contien una mina */
   const cell = document.getElementById("c-" + i + "-" + j);
-  return cell && cell.className === "mina";
+  return cell && cell.className == "mina";
 }
 
 function colocarNumeros() {
+  /* Función para colocar números según la cantidad de minas adyacentes */
   for (let i = 0; i < filasColumnas; i++) {
     for (let j = 0; j < filasColumnas; j++) {
       let minas = 0;
@@ -180,6 +193,7 @@ function colocarNumeros() {
 
       let num;
       switch (minas) {
+        /* Switch para  colocar el número según la cantidad de minas adyacentes */
         case 1:
           num = "one";
           break;
@@ -217,11 +231,10 @@ function colocarNumeros() {
 
 
 function hora() {
+  /* Función para crear el temporizador e imprimirlo */
   currentTime = new Date();
   elapsedTime = currentTime - startTime;
   timePassed = new Date(elapsedTime);
-
-
   hours = timePassed.getUTCHours().toString().padStart(2, '0');
   minutes = timePassed.getUTCMinutes().toString().padStart(2, '0');
   seconds = timePassed.getUTCSeconds().toString().padStart(2, '0');
@@ -230,6 +243,7 @@ function hora() {
   document.getElementById("tiempo").innerHTML = "Tiempo: "+`${hours}:${minutes}:${seconds}`;
 }
 function stopit() {
+  /* Función para reiniciar el temporizador */
   clearInterval(intervalo)
   document.getElementById("tiempo").innerHTML = "Tiempo: 00:00:00";
 }

@@ -1,0 +1,22 @@
+Al ser un ejercicio algo más complejo, me ha parecido prudente explicar mi planteamiento y puntos de vista por separado:
+
+Mi planteamiento ha sido el de generar una tabla como tablero de juego y otro como covertura
+
+La tabla de covertura tiene una imagen en cada celda, y al hacer click izq, esa imagen desaparecerá. Si por el contrario, el click es drch, alternará entre la bandera, la interrogación y de nuevo la imagen de covertura, teniendo en cuenta que la bandera bloquea el click izq.
+
+El tablero de juego (tabla inferior) no se genera hasta que se recibe el primer click, impidiendo que el primer elemento clicado sea una mina o cualquier elemento que no sea una casilla en blanco.
+
+Al hacer click en una casilla vacía, comprobará las adyacentes para comprobar si tienen número o están en blanco, en cuyo caso repetirá la comprobación a su vez.
+
+Al generar el tablero de juego, primero se colocarán las minas, en base a números aleatorios haciendo referencia a casillas, controlando tanto los bordes del tablero como las casillas que ya contengan una mina.
+
+Tras generar las minas, se generan los números, pasando por cada casilla y comprobando cuantas minas tiene en las celdas adyacentes
+
+Al hacer click en una casilla con número, revelará esa única casilla
+
+Al hacer click en una mina, todo el tablero de covertura desaparecerá, mostrando el tablero al completo, y la mina detonada tomará un color de fondo de color rojo
+Cuando la suma de casillas marcadas por una bandera y casillas reveladas sea igual que el número total de casillas (es decir, se hayan revelado todas las casillas que no sean minas y las casillas que sean minas estén todas marcadas) se revelará el tablero completo, marcando las minas con un fondo verde
+
+Al marcar una casilla con una bandera, el contador de minas marcadas ascenderá, y al desmarcarla, descenderá
+
+Al hacer el primer click en un tablero, el temporizador se iniciará, y al generar un nuevo tablero, se reiniciará

@@ -1,80 +1,99 @@
 
     body{
+      /* Estilo para el fondo del documento */
       background-color: lightgray;
     }
     .mina {
+      /* Estilo para las casillas con mina */
       background-image: url("Mina.png");
       background-repeat: no-repeat;
     }
     .minaBum {
+      /* Estilo para la casilla detonada */
       background-color: red;
       background-image: url("Mina.png");
       background-repeat: no-repeat;
     }
     .minaDefused {
+      /* Estilo para las casillas desactivadas */
       background-color: green;
       background-image: url("Mina.png");
       background-repeat: no-repeat;
     }
     .marked {
+      /* Estilo para las casillas marcadas con bandera */
       background-image: url("marked.png");
       background-repeat: no-repeat;
       background-size: cover;
     }
     .one {
+      /* Estilo para las casillas con el número uno */
       background-image: url("one.png");
       background-repeat: no-repeat;
     }
     .two {
+      /* Estilo para las casillas con el número dos */
       background-image: url("two.png");
       background-repeat: no-repeat;
     }
     .three {
+      /* Estilo para las casillas con el número tres */
       background-image: url("three.png");
       background-repeat: no-repeat;
     }
     .four {
+      /* Estilo para las casillas con el número cuatro */
       background-image: url("four.png");
       background-repeat: no-repeat;
     }
     .five {
+      /* Estilo para las casillas con el número cinco */
       background-image: url("five.png");
       background-repeat: no-repeat;
     }
     .six {
+      /* Estilo para las casillas con el número seis */
       background-image: url("six.png");
       background-repeat: no-repeat;
     }
     .seven {
+      /* Estilo para las casillas con el número siete */
       background-image: url("seven.png");
       background-repeat: no-repeat;
     }
     .eight {
+      /* Estilo para las casillas con el número ocho */
       background-image: url("eight.png");
       background-repeat: no-repeat;
     }
     .hidden {
+      /* Estilo para las casillas cubiertas */
       background-image: url("hidden.png");
       background-repeat: no-repeat;
       background-size: cover;
     }
     .unknown {
+      /* Estilo para las casillas marcadas con interrogante */
       background-image: url("unknown.png");
       background-repeat: no-repeat;
       background-size: cover;
     }
     .shown {
+      /* Estilo para las casillas que han sido descubiertas */
       visibility: hidden;
     }
     #container>table {
+      /* Estilo para el las tablas de juego y de covertura */
       border: solid 0.5px lightgray;
       border-collapse: collapse;
       position: absolute;
     }
     td{
+      /* Estilo para las celdas de la tabla (las del tablero de juego cargarán otro  estilo, al sobreescribirlo más adelante) */
       width: 600px;
     }
     #container>table>tr>td {
+      /* Estilo para las celdas de las tablas de juego y de covertura */
       border: solid 0.5px gray;
       width: 15px;
       height: 15px;
