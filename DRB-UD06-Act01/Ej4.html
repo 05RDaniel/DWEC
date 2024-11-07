@@ -7,13 +7,22 @@
     <title>Document</title>
   </head>
   <body>
-    <div>Selección de dificultad:</div>
-    <button onclick="dificultad(1)">Fácil</button>
-    <button onclick="dificultad(2)">Normal</button>
-    <button onclick="dificultad(3)">Difícil</button>
-    <button onclick="dificultad(4)">Leyenda</button>
+    <table>
+      <tr>
+        <td>Selección de dificultad:</td>
+        <td><div id="marcadas">Número de minas marcadas: 0</div></td>
+        <td><div id="tiempo"></div></td>
+      </tr>
+      <tr>
+        <td><button onclick="dificultad(1)">Fácil</button>
+          <button onclick="dificultad(2)">Normal</button>
+          <button onclick="dificultad(3)">Difícil</button>
+          <button onclick="dificultad(4)">Leyenda</button></td>
+      </tr>
+    </table>
     
     <div id="container"></div>
+    
   </body>
   
   <script src="Ej4-Juego.js"></script>
@@ -32,6 +41,5 @@
     crearTabla();
     crearCovertura();
     }
-    
     </script>
 </html>

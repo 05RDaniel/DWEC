@@ -1,11 +1,12 @@
 casillaUno = 0;
-filasColumnas = 25;
-numMinas = 75;
 
-function filasColumnasMinas(a, b){
-  filasColumnas=a
-  numMinas=b
-  casillaUno=0
+
+function filasColumnasMinas(a, b) {
+  stopit()
+  document.getElementById("marcadas").innerHTML = "Número de minas  marcadas: 0";
+  filasColumnas = a
+  numMinas = b
+  casillaUno = 0
 }
 
 function crearTabla() {
@@ -36,6 +37,19 @@ function crearCovertura() {
       celda.addEventListener("click", function () {
         mostrar(celda);
       });
+      celda.addEventListener("contextmenu", function () {
+        if (celda.className == "hidden") {
+          celda.className = "marked";
+        } else if (celda.className == "marked") {
+          celda.className = "unknown";
+        } else if (celda.className == "unknown") {
+          celda.className = "hidden";
+        }
+        markCells();
+      });
+      celda.addEventListener("contextmenu", function inhabilitar(e) {
+        e.preventDefault();
+      });
       fila.appendChild(celda);
     }
     tabla.appendChild(fila);
@@ -45,42 +59,53 @@ function crearCovertura() {
   container.appendChild(tabla);
 }
 
-function mostrar(obj) {
-  obj.style.visibility = "hidden";
-  idN = obj.id.split("-");
-  idF = "c-" + idN[1] + "-" + idN[2];
-  if (casillaUno == 0) {
-    primerClick(idF);
-  } else {
-    if (document.getElementById(idF).className == "mina") {
-      document.getElementById(idF).className = "minaBum";
-      document.getElementById("covertura").style.visibility = "hidden";
-    }
+function markCells() {
+  document.getElementById("marcadas").innerHTML = "Número de minas  marcadas: " + document.getElementsByClassName("marked").length;
+  if (document.getElementsByClassName("marked").length + document.getElementsByClassName("shown").length == filasColumnas * filasColumnas) {
+    /* Si el número de casillas marcadas + el número de casillas mostradas es igual al número total de casillas */
+    document.getElementById("covertura").style.visibility = "hidden";
+    Array.from(document.getElementsByClassName("mina")).forEach(element => {
+      element.className = "minaDefused"
+    });
   }
-  mostrarAdyacentes(idF);
+}
+
+function mostrar(obj) {
+  if (obj.className != "marked") {
+    obj.className = "shown";
+    idN = obj.id.split("-");
+    idF = "c-" + idN[1] + "-" + idN[2];
+    if (casillaUno == 0) {
+      primerClick(idF);
+    } else {
+      if (document.getElementById(idF).className == "mina") {
+        document.getElementById(idF).className = "minaBum";
+        document.getElementById("covertura").style.visibility = "hidden";
+      }
+    }
+    mostrarAdyacentes(idF);
+  }
 }
 
 function mostrarAdyacentes(idF) {
-  const stack = [idF];
-  while (stack.length > 0) {
-    const currentId = stack.pop();
-    const currentCell = document.getElementById(currentId);
+  const stack = [idF]; /* Guarda idF en un array */
+  while (stack.length > 0) { /* Hasta que el array que almacena id esté vacío */
+    const currentId = stack.pop(); /* elimina del array el último id del array, almacenándolo al mismo tiempo */
+    const currentCell = document.getElementById(currentId); /* obtiene la celda de el id actual */
 
-    if (currentCell && currentCell.className === "zero") {
-      currentCell.className = "revealed";
-
-      const idN = currentId.split("-");
+    if (currentCell && currentCell.className === "zero") { /* Si la celda actual existe y tiene la clase zero (vacía) */
+      const idN = currentId.split("-"); /* Separa las partes del id para obtener las coordenadas i y j */
       for (let i = -1; i <= 1; i++) {
         for (let j = -1; j <= 1; j++) {
           if (i !== 0 || j !== 0) {
-            const adjRow = parseInt(idN[1]) + i;
-            const adjCol = parseInt(idN[2]) + j;
-            if (adjRow >= 0 && adjRow < filasColumnas && adjCol >= 0 && adjCol < filasColumnas) {
-              const adjId = "d-" + adjRow + "-" + adjCol;
-              const adjCelda = document.getElementById(adjId);
-              if (adjCelda && adjCelda.style.visibility !== "hidden") {
-                adjCelda.style.visibility = "hidden";
-                stack.push("c-" + adjRow + "-" + adjCol);
+            const adjRow = parseInt(idN[1]) + i; /* representa la coordenada i actual -1, +0 y +1 */
+            const adjCol = parseInt(idN[2]) + j; /* representa la coordenada j actual -1, +0 y +1 */
+            if (adjRow >= 0 && adjRow < filasColumnas && adjCol >= 0 && adjCol < filasColumnas) { /* comprobación rápida de que la celda a mostrar está dentro de la tabla */
+              const adjId = "d-" + adjRow + "-" + adjCol; /* Forma  el id de la celda*/
+              const adjCelda = document.getElementById(adjId); /* almacena la celda a partir del id formado */
+              if (adjCelda && adjCelda.className != "shown") {  /* Si la celda existe y no está oculta */
+                adjCelda.className = "shown"; /* Aplica la clase "hidden" */
+                stack.push("c-" + adjRow + "-" + adjCol); /* Añade el id de la celda al array */
               }
             }
           }
@@ -91,6 +116,8 @@ function mostrarAdyacentes(idF) {
 }
 
 function primerClick(idF) {
+  startTime = new Date();
+  intervalo = setInterval(hora, 1000);
   document.getElementById(idF).className = "zero";
   casillaUno = idF;
   colocarMinas();
@@ -187,3 +214,24 @@ function colocarNumeros() {
     }
   }
 }
+
+
+function hora() {
+  currentTime = new Date();
+  elapsedTime = currentTime - startTime;
+  timePassed = new Date(elapsedTime);
+
+
+  hours = timePassed.getUTCHours().toString().padStart(2, '0');
+  minutes = timePassed.getUTCMinutes().toString().padStart(2, '0');
+  seconds = timePassed.getUTCSeconds().toString().padStart(2, '0');
+
+
+  document.getElementById("tiempo").innerHTML = "Tiempo: "+`${hours}:${minutes}:${seconds}`;
+}
+function stopit() {
+  clearInterval(intervalo)
+  document.getElementById("tiempo").innerHTML = "Tiempo: 00:00:00";
+}
+
+intervalo = setInterval(hora, 1000);

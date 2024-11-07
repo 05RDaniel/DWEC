@@ -11,6 +11,16 @@
       background-image: url("Mina.png");
       background-repeat: no-repeat;
     }
+    .minaDefused {
+      background-color: green;
+      background-image: url("Mina.png");
+      background-repeat: no-repeat;
+    }
+    .marked {
+      background-image: url("marked.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
     .one {
       background-image: url("one.png");
       background-repeat: no-repeat;
@@ -48,12 +58,23 @@
       background-repeat: no-repeat;
       background-size: cover;
     }
-    table {
+    .unknown {
+      background-image: url("unknown.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .shown {
+      visibility: hidden;
+    }
+    #container>table {
       border: solid 0.5px lightgray;
       border-collapse: collapse;
       position: absolute;
     }
-    td {
+    td{
+      width: 600px;
+    }
+    #container>table>tr>td {
       border: solid 0.5px gray;
       width: 15px;
       height: 15px;
