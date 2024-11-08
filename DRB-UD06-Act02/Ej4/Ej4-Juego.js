@@ -1,5 +1,6 @@
 casillaUno = 0;
 
+/* LEER Explicacion Ej4.txt */
 
 function filasColumnasMinas(a, b) {
   /* Establece el numero de filas y columnas, de minas, detiene el contador y reinicia la casilla uno */
