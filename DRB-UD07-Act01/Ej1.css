@@ -5,10 +5,14 @@
 body{
     background-color: antiquewhite;
 }
+div{
+    margin: 5vh 5vw;
+}
 div#nuevoEmpleado{
     height: 6vh;
     text-align: right;
     background-color: lightgrey;
+    margin: 0;
 }
 div#nuevoEmpleado > button{
     margin: 10px;
@@ -25,10 +29,25 @@ td{
 }
 div#formulario{
     background-color: white;
-    margin: 1vh 1vw;
+    height: 20vh;
     padding: 10vh 10vw;
     border: solid 1px black;
+
+}
+fieldset{
+    width: 50vw;
+    display: grid;
+    place-items: center;
+}
+fieldset>div{
+    margin: 1vh 0vw;
 }
 fieldset{
     border: none;
+}
+.hidden{
+    display: none;
+}
+.shown{
+    display: block;
 }

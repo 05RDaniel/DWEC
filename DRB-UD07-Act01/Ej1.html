@@ -10,9 +10,9 @@
     <script src="Ej1.js">
     </script>
     <div id="nuevoEmpleado">
-      <button>Nuevo empleado</button>
+      <button onclick="nuevoEmpleado()">Nuevo empleado</button>
     </div>
-    <div id="mostrarEmpleados">
+    <div id="empleados">
       <table id="caja">
         <tr>
           <td>Id</td>
@@ -24,22 +24,22 @@
         </tr>
       </table>
     </div>
-    <div id="formulario">
+    <div id="formulario" class="hidden">
       <h1></h1>
       <form>
         <fieldset>
           <legend>Rellene los datos</legend>
           <div>
             <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" /><br /><br />
+            <input type="text" id="nombre" name="nombre" />
           </div>
           <div>
             <label for="edad">Edad:</label>
-            <input type="number" id="edad" name="edad" /><br /><br />
+            <input type="number" id="edad" name="edad" />
           </div>
           <div>
             <label for="cargo">Cargo:</label>
-            <input type="text" id="cargo" name="cargo" /><br /><br />
+            <input type="text" id="cargo" name="cargo" />
           </div>
           <div>
             <label for="contratado">Contratado:</label>

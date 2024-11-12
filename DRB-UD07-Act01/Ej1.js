@@ -30,3 +30,7 @@ var peticion = new XMLHttpRequest();
         peticion.send();
       }
       obtenerDatosServidor();
+      function nuevoEmpleado(){
+        document.getElementById("empleados").className="hidden"
+        document.getElementById("formulario").className="shown"
+      }
