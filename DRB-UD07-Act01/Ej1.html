@@ -4,54 +4,49 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="Ej1.css" />
-    <title>Document</title>
+    <title>Gestión de Empleados</title>
   </head>
   <body>
-    <script src="Ej1.js">
-    </script>
+    <script src="Ej1.js"></script>
     <div id="nuevoEmpleado">
       <button onclick="nuevoEmpleado()">Nuevo empleado</button>
     </div>
     <div id="empleados">
       <table id="caja">
         <tr>
-          <td>Id</td>
-          <td>Nombre</td>
-          <td>Edad</td>
-          <td>Cargo</td>
-          <td>Contratado</td>
-          <td>Acciones</td>
+          <th>Id</th>
+          <th>Nombre</th>
+          <th>Edad</th>
+          <th>Cargo</th>
+          <th>Contratado</th>
+          <th>Acciones</th>
         </tr>
       </table>
     </div>
     <div id="formulario" class="hidden">
-      <h1></h1>
+      <h1>Añadir nuevo empleado</h1>
       <form>
         <fieldset>
           <legend>Rellene los datos</legend>
           <div>
             <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" />
+            <input type="text" id="nombre" name="nombre" required />
           </div>
           <div>
             <label for="edad">Edad:</label>
-            <input type="number" id="edad" name="edad" />
+            <input type="number" id="edad" name="edad" required />
           </div>
           <div>
             <label for="cargo">Cargo:</label>
-            <input type="text" id="cargo" name="cargo" />
+            <input type="text" id="cargo" name="cargo" required />
           </div>
           <div>
             <label for="contratado">Contratado:</label>
-            <input
-              type="checkbox"
-              id="contratado"
-              name="contratado"
-            /><br /><br />
+            <input type="checkbox" id="contratado" name="contratado" /><br /><br />
           </div>
           <div>
-            <input type="submit" value="Enviar" />
-            <input type="button" value="Cancelar" onclick="cancelar()" />
+            <button type="button" onclick="addEmpleado()">Enviar</button>
+            <button type="button" onclick="cerrarFormulario()">Cancelar</button>
           </div>
         </fieldset>
       </form>
