@@ -1,0 +1,45 @@
+@extends('layouts.app')
+
+@section('content')
+    <div class="container">
+        <div class="row justify-content-center mt-3">
+            <div class="card col-lg-8">
+                <div class="card-header d-inline-flex justify-content-between">
+                    <h2>Relación de Ubicaciones</h2>
+                    <div class="navbar-text">
+                        <a href="{{ route('ubicacions.create') }}" class="btn btn-primary text-white"><i class="fa fa-plus"></i> Nueva Ubicación</a>
+                        <a href="{{ route('home') }}" class="btn btn-primary text-white ms-1"><i class="fa fa-arrow-left"></i> Volver</a>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    @include('layouts.errores')
+                    @if ($ubicacions->isEmpty())
+                        <div>
+                            <h3>No hay Ubicaciones</h3>
+                        </div>
+                    @else
+                        <table class="table table-striped">
+                            <tr>
+                                <th>Acciones</th>
+                                <th>ID</th>
+                                <th>Ubicación</th>
+                            </tr>
+                            @foreach ($ubicacions as $ubicacion)
+                                <tr>
+                                    <td>
+                                        <a href="ubicacions/{{ $ubicacion->id }}/edit" class="btn btn-sm btn-warning me-1"><i class="fa fa-edit"></i> Modif.</a>
+                                        <a href="{{ route('ubicacions.destroy', $ubicacion->id) }}" class="btn btn-sm btn-danger"><i class="fa fa-times"></i> Borrar</a>
+                                    </td>
+                                    <td>{{ $ubicacion->id }}</td>
+                                    <td>{{ $ubicacion->nombre }}</td>
+                                </tr>
+                            @endforeach
+
+                        </table>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

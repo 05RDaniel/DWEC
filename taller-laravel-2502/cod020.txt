@@ -1,0 +1,70 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    $(function(){
+        $("#idpc").on("change", function () {
+            var valor = $("#idpc").val();
+            if (valor != '') {
+                $.ajax({
+                    url: '{{ url("/dimemarcaubic") }}',
+                    type: 'GET',
+                    retrieve: true,
+                    dataType: "JSON",
+                    data: {
+                        'valor': valor,
+                    },
+                    success: function (respuesta) {
+                        if (respuesta.resultado=='bien'){
+                            $('#marca').val(respuesta.msjmarca);
+                            $('#ubicacion').val(respuesta.msjubicacion);
+                        }else{
+                            console.log(respuesta.resultado);
+                            console.log(respuesta.msjmarca);
+                            console.log(respuesta.msjubicacion);
+                            $('#marca').val("");
+                            $('#ubicacion').val("");
+                        }
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) { // Lo que hace que falle
+                        console.log("AJAX error dimemarcaubic: " + textStatus + ' : ' + errorThrown);
+                        console.log(JSON.stringify(jqXHR));
+                    }
+                })
+            }else{
+                $('#marca').val("");
+                $('#ubicacion').val("");
+            }
+        });
+        $("#idsoft").on("change", function () {
+            var valor = $("#idsoft").val();
+            if (valor != '') {
+                $.ajax({
+                    url: '{{ url("/dimelicencia") }}',
+                    type: 'GET',
+                    retrieve: true,
+                    dataType: "JSON",
+                    data: {
+                        'valor': valor,
+                    },
+                    success: function (respuesta) {
+                        if (respuesta.resultado=='bien'){
+                            $('#licencia').val(respuesta.msjrespuesta);
+                        }else{
+                            console.log(respuesta.resultado);
+                            console.log(respuesta.msjrespuesta);
+                            $('#licencia').val('');
+                        }
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) { // Lo que hace que falle
+                        console.log("AJAX error dimelicencia: " + textStatus + ' : ' + errorThrown);
+                        console.log(JSON.stringify(jqXHR));
+                    }
+                })
+            }else{
+                $('#licencia').val("");
+            }
+        });
+        $("#idpc").change();
+        $("#idsoft").change();
+    });
+
+</script>

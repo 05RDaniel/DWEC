@@ -1,0 +1,13 @@
+Y modificamos los métodos show y destroy de app/Http/Controllers/MarcaController.php:
+=====================================================================================
+    public function show(Marca $marca)
+    {
+        return View('marca.show', compact('marca'));
+    }
+
+public function destroy(Marca $marca)
+    {
+        DB::delete('delete from marcas where id = ?;',[$marca->id]);
+        Session::flash('success', 'Marca "' . $marca->nombre . '" eliminada');
+        return redirect()->route('marcas.index');
+    }

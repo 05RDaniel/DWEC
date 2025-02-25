@@ -1,0 +1,47 @@
+@extends('layouts.app')
+
+@section('content')
+    <div class="container">
+        <div class="row justify-content-center mt-3">
+            <div class="card col-lg-8">
+                <div class="card-header d-inline-flex justify-content-between">
+                    <h2>Relación de Marcas</h2>
+                    <div class="navbar-text">
+                        <a href="#" class="btn btn-primary text-white">
+                            Nueva
+                            Marca</a>
+                        <a href="#" class="btn btn-primary text-white ms-1">
+                            Volver</a>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    @if ($marcas->isEmpty())
+                        <div>
+                            <h3>No hay Marcas</h3>
+                        </div>
+                    @else
+                        <table class="table table-striped">
+                            <tr>
+                                <th>Acciones</th>
+                                <th>ID</th>
+                                <th>MARCA</th>
+                            </tr>
+                            @foreach ($marcas as $marca)
+                                <tr>
+                                    <td>
+                                        <a href="#" class="btn btn-sm btn-warning me-1"> Modif.</a>
+                                        <a href="#" class="btn btn-sm btn-danger"> Borrar</a>
+                                    </td>
+                                    <td>{{ $marca['id'] }}</td>
+                                    <td>{{ $marca['marca'] }}</td>
+                                </tr>
+                            @endforeach
+
+                        </table>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

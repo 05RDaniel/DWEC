@@ -1,0 +1,61 @@
+El método store:
+================
+public function store(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'nombre' => 'required|max:50|unique:ubicacions',
+        ], ['nombre.unique' => 'No se ha grabado porque la ubicacion introducida ya la has usado antes. Introduce otra por favor.',
+            'nombre.required' => 'Introduce la ubicacion por favor.']);
+
+        if ($validator->fails()) {
+            return redirect('ubicacions/create')
+                ->withErrors($validator)
+                ->withInput();
+        }
+        DB::table('ubicacions')->insert($request->except(['_token','grabar']));
+        Session::flash('success', 'La ubicación se ha creado satisfactoriamente');
+        return redirect()->route('ubicacions.index');
+    }
+
+Los métodos show y edit:
+========================
+public function show(Ubicacion $ubicacion)
+    {
+        return View('ubicacion.show', compact('ubicacion'));
+    }
+
+public function edit(Ubicacion $ubicacion)
+    {
+        return View('ubicacion.edit',['ubicacion' => $ubicacion]);
+    }
+
+El método update no lo hacemos con query builder porque ya tenemos como parámetro de entrada un modelo y lo vamos a usar:
+=========================================================================================================================
+public function update(Request $request, Ubicacion $ubicacion)
+    {
+        $validator = Validator::make($request->all(), [
+            'nombre' => 'required|max:50|unique:ubicacions',
+        ], [
+            'nombre.unique' => 'No se ha grabado porque la ubicación introducida ya la has usado antes. Introduce otra por favor.',
+            'nombre.required' => 'Introduce la ubicación por favor.'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('ubicacions.edit', $ubicacion->id)->withErrors($validator)->withInput();
+            // equivalente redirect('marcas/'. $marca->id.'/edit')->withErrors($validator)->withInput();
+        }
+        // $input = $request->all();
+        $input = $request->except('_token');
+        $ubicacion->fill($input)->save();
+        Session::flash('success', 'Ubicación "' . $ubicacion->id . '" actualizada');
+      return redirect()->route('ubicacions.index');
+    }
+
+Igual nos pasa con destroy:
+===========================
+public function destroy(Ubicacion $ubicacion)
+    {
+        $ubicacion->delete();
+        Session::flash('success', 'Ubicación "' . $ubicacion->nombre . '" eliminada');
+        return redirect()->route('ubicacions.index');
+    }

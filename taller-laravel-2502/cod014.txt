@@ -1,0 +1,51 @@
+@extends('layouts.app')
+
+@section('content')
+    <div class="container">
+        <div class="row justify-content-center mt-3">
+            <div class="card col-lg-8">
+                <div class="card-header d-inline-flex justify-content-between">
+                    <h2>Relación de Ordenadores</h2>
+                    <div class="navbar-text">
+                        <a href="{{ route('ordenadors.create') }}" class="btn btn-primary text-white"><i class="fa fa-plus"></i> Nuevo Ordenador</a>
+                        <a href="{{ route('home') }}" class="btn btn-primary text-white ms-1"><i class="fa fa-arrow-left"></i> Volver</a>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    @include('layouts.errores')
+                    @if ($ordenadors->isEmpty())
+                        <div>
+                            <h3>No hay Ordenadores</h3>
+                        </div>
+                    @else
+                        <table class="table table-striped">
+                            <tr>
+                                <th>Acciones</th>
+                                <th>Número</th>
+                                <th>Marca</th>
+                                <th>Modelo</th>
+                                <th>Ubicación</th>
+                            </tr>
+                            @foreach ($ordenadors as $ordenador)
+                                <tr>
+                                    <td>
+                                        <a href="ordenadors/{{ $ordenador->id }}" class="btn btn-sm btn-primary me-1"><i class="fa fa-eye"></i> Ver</a>
+                                        <a href="ordenadors/{{ $ordenador->id }}/edit" class="btn btn-sm btn-warning me-1"><i class="fa fa-edit"></i> Modif.</a>
+                                        <a href="ordenadors/showdelete/{{ $ordenador->id }}" id="{{ $ordenador->id }}" class="btn btn-sm btn-danger"><i class="fa fa-times"></i> Borrar</a>
+                                    </td>
+                                    <td>{{ $ordenador->numero }}</td>
+                                    <td>{{ $ordenador->marca }}</td>
+                                    <td>{{ $ordenador->modelo }}</td>
+                                    <td>{{ $ordenador->ubicacion }}</td>
+                                </tr>
+                            @endforeach
+
+                        </table>
+                        {{ $ordenadors->links() }}
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

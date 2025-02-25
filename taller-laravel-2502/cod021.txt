@@ -1,0 +1,42 @@
+public function listaActivos(Request $request)
+    {
+        $teclados = DB::table('teclados')
+            ->join('marcas', 'teclados.idmarca', '=', 'marcas.id')
+            ->join('ubicacions', 'teclados.idubicacion', '=', 'ubicacions.id')
+            ->select(DB::raw("'TECLADO' as activo"), 'teclados.id', 'teclados.numero', 'marcas.nombre as marca', 'teclados.modelo', 'ubicacions.nombre as ubicacion');
+        $componentes = DB::table('componentes')
+            ->join('marcas', 'componentes.idmarca', '=', 'marcas.id')
+            ->join('ubicacions', 'componentes.idubicacion', '=', 'ubicacions.id')
+            ->select(DB::raw("'COMPONENTE' as activo"), 'componentes.id', 'componentes.numero', 'marcas.nombre as marca', 'componentes.modelo', 'ubicacions.nombre as ubicacion');
+        $dispreds = DB::table('dispreds')
+            ->join('marcas', 'dispreds.idmarca', '=', 'marcas.id')
+            ->join('ubicacions', 'dispreds.idubicacion', '=', 'ubicacions.id')
+            ->select(DB::raw("'DISP_RED' as activo"), 'dispreds.id', 'dispreds.numero', 'marcas.nombre as marca', 'dispreds.modelo', 'ubicacions.nombre as ubicacion');
+        $impresoras = DB::table('impresoras')
+            ->join('marcas', 'impresoras.idmarca', '=', 'marcas.id')
+            ->join('ubicacions', 'impresoras.idubicacion', '=', 'ubicacions.id')
+            ->select(DB::raw("'IMPRESORA' as activo"), 'impresoras.id', 'impresoras.numero', 'marcas.nombre as marca', 'impresoras.modelo', 'ubicacions.nombre as ubicacion');
+        $monitors = DB::table('monitors')
+            ->join('marcas', 'monitors.idmarca', '=', 'marcas.id')
+            ->join('ubicacions', 'monitors.idubicacion', '=', 'ubicacions.id')
+            ->select(DB::raw("'MONITOR' as activo"), 'monitors.id', 'monitors.numero', 'marcas.nombre as marca', 'monitors.modelo', 'ubicacions.nombre as ubicacion');
+        $ordenadors = DB::table('ordenadors')
+            ->join('marcas', 'ordenadors.idmarca', '=', 'marcas.id')
+            ->join('ubicacions', 'ordenadors.idubicacion', '=', 'ubicacions.id')
+            ->select(DB::raw("'ORDENADOR' as activo"), 'ordenadors.id', 'ordenadors.numero', 'marcas.nombre as marca', 'ordenadors.modelo', 'ubicacions.nombre as ubicacion');
+        $activos = DB::table('ratons')
+            ->join('marcas', 'ratons.idmarca', '=', 'marcas.id')
+            ->join('ubicacions', 'ratons.idubicacion', '=', 'ubicacions.id')
+            ->select(DB::raw("'RATON' as activo"), 'ratons.id', 'ratons.numero', 'marcas.nombre as marca', 'ratons.modelo', 'ubicacions.nombre as ubicacion')
+            ->union( $teclados)
+            ->union( $componentes)
+            ->union( $dispreds)
+            ->union( $impresoras)
+            ->union( $monitors)
+            ->union( $ordenadors)
+            ->orderBy('ubicacion','asc')
+            ->orderBy('activo', 'asc')
+            ->simplePaginate(15);
+        $ubicaciones = DB::select('select id,nombre from ubicacions order by nombre;');
+        return view('ubicacion.listaactivos', compact('activos','ubicaciones'));
+    }

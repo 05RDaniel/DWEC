@@ -1,0 +1,24 @@
+E implementamos los métodos edit y update de app/Http/Controllers/MarcaController.php
+=====================================================================================
+public function edit(Marca $marca)
+    {
+        return View('marca.edit',['marca' => $marca]);
+    }
+
+public function update(Request $request, Marca $marca)
+    {
+        $validator = Validator::make($request->all(), [
+            'nombre' => 'required|max:50|unique:marcas',
+        ], [
+            'nombre.unique' => 'No se ha grabado porque la marca introducida ya la has usado antes. Introduce otra por favor.',
+            'nombre.required' => 'Introduce la marca por favor.'
+        ]);
+        if ($validator->fails()) {
+            return redirect()->route('marcas.edit', $marca->id)->withErrors($validator)->withInput();
+            // equivalente redirect('marcas/'. $marca->id.'/edit')->withErrors($validator)->withInput();
+        }
+        DB::update('update marcas set nombre = ? where id = ?;', [$request
+->nombre, $marca->id]);
+        Session::flash('success', 'Marca "' . $marca->id . '" actualizada');
+        return redirect()->route('marcas.index');
+    }
